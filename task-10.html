@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+</head>
+<body>
+  <h1>TASK</h1>
+  <ul>
+
+  </ul>
+
+  <form>
+    new task: <input type="text" name="task" id="task">
+    <button>Add task</button>
+  </form>
+
+    <script>
+        // select all element nodes
+    const ul = document.querySelector("ul");
+    const form = document.querySelector("form");
+    const input = document.querySelector("input");
+    const btn = document.querySelector("button");
+
+    // when user click the button or press the enter key
+    form.onsubmit = function(){
+        // get value from user
+      const value = input.value;
+
+    //   check if the value is valid
+      if(value === ""){
+        return false;
+      }
+
+    //   create a li node element and add the value of input to it
+      const li = document.createElement("li");
+      li.innerHTML = value;
+
+    //   create a button to delete
+      const btn = document.createElement("button");
+      btn.innerHTML = "Delete";
+      li.appendChild(btn);
+      btn.onclick = delTask;
+
+    //   append the li to the parent node
+      document.querySelector("ul").appendChild(li);
+
+    //   finally clear the input
+      input.value = "";
+
+    //   prevent page from loading while submiting
+      return false;
+       
+    }
+
+    // create a func to delete the li
+    function delTask(event){
+      event.target.parentNode.remove();
+    }
+    </script>
+
+</body>
+</html>
+  
+
+
+
+
